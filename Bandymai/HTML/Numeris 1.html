@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<!-- Svetaine -->
+<html>
+  <!-- Uzslepta informacija -->
+  <head>
+    <!-- Informacija apie pasirenkamus puslapi -->
+    <meta charset="UTF-8" />
+    <meta name="description" content="puslapio descriptionas" />
+    <meta name="author" content="Tautvydas Kuklys" />
+    <meta name="keywords" content="programavimas, Creative Partner, HTML" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Svetaines pavadinimas -->
+    <title>Bandymas #1</title>
+  </head>
+
+  <!-- Rodoma -->
+  <body>
+    <!-- Header (titulinis), taip pat <h2>, <h3>... -->
+    <header id="top">
+      <div>
+        <h1>Bandymas #1</h1>
+      </div>
+    </header>
+
+    <!-- Atskyrimio linija -->
+    <hr />
+
+    <!-- Puslapio pagrindine informacija -->
+    <main>
+      <!-- <div> sugrupuoja kelis tagus i viena, perkelia i nauja eilute, galima jiems priskirti stilius, id t.t. -->
+      <div style="color: magenta; background-color: black">
+        <!-- Paragrafas -->
+        <p>
+          <!-- Padidina teksta -->
+          <b> Lorem ipsum dolor sit </b>
+
+          <!-- Sumazina teksta -->
+          <small> ,amet consectetur adipisicing elit. </small>
+
+          <!-- Perkelia i nauja eilute -->
+          <br />
+          Ratione dolores nostrum nemo odio necessitatibus <br />
+          similique laboriosam, sunt ipsa tempore ea sit laborum, <br />
+          molestias explicabo molestiae ex qui hic quibusdam? Rerum.
+        </p>
+      </div>
+
+      <hr />
+      <div style="font-family: Arial, Helvetica, sans-serif; color: red">
+        <p>
+          <!-- Superscriptas -->
+          2<sup>100</sup>
+          <br />
+
+          <!-- Subscriptas -->
+          H<sub>2</sub>
+        </p>
+      </div>
+
+      <!-- Linkas -->
+      <a href="https://google.com">Labai naudingas linkas</a>
+      <a href="Numeris2 (Su CSS).html">Kitas Puslapis</a>
+
+      <br />
+      <!-- Paveiksliukas, veikiantis kaip linkas -->
+      <a href="https://google.com" target="_blank">
+        <img src="logo.jpg" alt="Google" style="width: 25%" />
+      </a>
+
+      <!-- Unordered list -->
+      <ul>
+        <li>Bananai</li>
+        <li>Obuoliai</li>
+        <li>Apelsinai</li>
+      </ul>
+
+      <!-- Ordered list -->
+      <ol type="i">
+        <li>Sunys</li>
+        <li>Kates</li>
+        <li>Kaciukai</li>
+        <li>Suniukai</li>
+      </ol>
+
+      <!-- Descriptive list -->
+      <dl>
+        <dt>Bananai</dt>
+        <dd>- Geltoni</dd>
+        <dt>Obuoliai</dt>
+        <dt>Apelsinai</dt>
+      </dl>
+
+      <!-- Lentele -->
+      <table>
+        <thead>
+          <!-- Lenteles pavadinimas -->
+          <caption>
+            <h2>Skaiciai</h2>
+          </caption>
+
+          <!-- Table row -->
+          <tr>
+            <!-- Table heading -->
+            <th>1 stulp</th>
+            <th>2 stulp</th>
+            <th>3 stulp</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <!-- Table data -->
+            <td>Pirmas</td>
+            <td>Antras</td>
+            <td>Trecias</td>
+          </tr>
+
+          <tr>
+            <td>Pirmas 2</td>
+            <td>Antras 2</td>
+            <td>Trecias 2</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form>
+        <!-- Naudotojo inputas, ivairus tipai: date, email, file, password, text, t.t...-->
+        <input type="text" />
+        <input
+          type="password"
+          name="slaptazodis"
+          id="slaptazodis"
+          placeholder="Slaptazodis"
+        />
+
+        <p>Pasirinkite MEGSTAMIAUSIĄ Programavimo kalbas:</p>
+
+        <!-- Radio naudojame, kai norime pasirinkti tik viena daikta -->
+        <input type="radio" name="kalba" id="" value="javascript" /> Javascript
+        <input type="radio" name="kalba" id="" value="Python" />Python
+        <input type="radio" name="kalba" id="" value="C++" /> C++
+
+        <p>Pasirinkite MEGIAMAS Programavimo kalbas:</p>
+
+        <!-- Checkbox naudojame, kai norime pasirinkti kelis daiktus -->
+        <input type="checkbox" name="kalba" id="" value="javascript" />
+        Javascript
+        <input type="checkbox" name="kalba" id="" value="Python" />Python
+        <input type="checkbox" name="kalba" id="" value="C++" /> C++
+
+        <br />
+
+        <!-- Pasirikti -->
+        <select name="kalbos" id="">
+          <option value="#"></option>
+          <option value="Javascript">Javascript</option>
+          <option value="Python">Python</option>
+          <option value="C++">C++</option>
+        </select>
+
+        <!-- Mygtukas duomenu pateikimui,
+                <button type="submit">Submit</button>
+                <br> taciau galime naudoti: -->
+
+        <br />
+        <input type="submit" name="Submit" id="pateikimas" value="Pateikti" />
+        <br />
+
+        <!-- Gali keisti dydi -->
+        <textarea cols="40" rows="10"> </textarea>
+      </form>
+
+      <iframe
+        src="http://www.azuolynogimnazija.lt/"
+        frameborder="0"
+        width="100%"
+        height="500px"
+        >Cant load</iframe
+      >
+
+      <!-- Internal linkas paciam puslapyje naudojant id -->
+      <a href="#top">Grizk i Virsu</a>
+      <br>
+      <a href="#">Tuscias linkas</a>
+    </main>
+
+    <!-- Puslapio informacija, kontaktai, t.t. -->
+    <footer></footer>
+  </body>
+</html>
+
+<!--
+Kiti Tagai:
+<article></article> - straipsnis
+<section></section> - puslapio skyrius
+<nav></nav> - tagas grupuoti linkam
+<aside></aside> - tagas salutiniams dalykams (reklamoms, content barui)
+<b></b> - paryskina teksta, bet jis nera svarbesnis
+<strong></strong> - paryskina teksta, jis yra svarbesnis
+<i></i> - italics, kai nesuteikia kitos reiksmes
+<em></em> - italics, kai norima kazka pabrezti
+<cite></cite> - citata
+<iframe></iframe> - inportuoja kita websita
+<video></video> - video
+<div></div> - konteineris, pradedantis is naujos eilutes
+<span></span> - konteineris, toj pacioj eilutej
+<form></form> - konteineris inputui
+-->

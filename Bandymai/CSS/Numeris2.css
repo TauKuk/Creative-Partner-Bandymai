@@ -1,0 +1,23 @@
+body{
+    color: blue;
+}
+
+h1{
+    color: blueviolet;
+}
+
+h2{
+    color: green;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+a{
+    color: hotpink;
+}
+
+/*  Pagrindines komandos:
+    
+    color - spalva
+    font-family - sriftu seima
+
+*/
