@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -30,10 +30,10 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 Route::put('/users/{user}', [UserController::class, 'update']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);
 
-Route::get('/{user}/posts', [PostController::class, 'index']);
-Route::get('/{user}/posts/create', [PostController::class, 'create']);
-Route::post('/{user}/posts', [PostController::class, 'store']);
-Route::get('/{user}/posts/{post}', [PostController::class, 'show']);
-Route::get('/{user}/posts/{post}/edit', [PostController::class, 'edit']);
-Route::put('/{user}/posts/{post}', [PostController::class, 'update']);
-Route::delete('/{user}/posts/{post}', [PostController::class, 'destroy']);
+Route::get('/{user}/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/{user}/events/create', [EventController::class, 'create']);
+Route::post('/{user}/events', [EventController::class, 'store']);
+Route::get('/{user}/events/{event}', [EventController::class, 'show']);
+Route::get('/{user}/events/{event}/edit', [EventController::class, 'edit']);
+Route::put('/{user}/events/{event}', [EventController::class, 'update']);
+Route::delete('/{user}/events/{event}', [EventController::class, 'destroy']);

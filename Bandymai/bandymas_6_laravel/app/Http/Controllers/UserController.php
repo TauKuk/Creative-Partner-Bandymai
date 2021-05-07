@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -46,9 +46,11 @@ class UserController extends Controller
 
     private function validateData()
     {
+        $id = Auth::user()->id;
+
         return request()->validate([
-            'name' => ['string', 'max:255'],
-            'email' => ['string', 'email', 'max:255', 'unique:users']
+            'name' => ['required', 'string', 'max:30', 'min:3'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id]
         ]);
     }
 }
