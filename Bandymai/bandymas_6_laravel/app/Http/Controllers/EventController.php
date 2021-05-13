@@ -18,12 +18,16 @@ class EventController extends Controller
     {
         $events = Event::all();
 
-        return view('event.index', compact('user', 'events'));
+        $default_picture = "uploads/h64PpximusVddp3kUBJdtMwBLiwqu4lThXverfYe.png";
+
+        return view('event.index', compact('user', 'events', 'default_picture'));
     }
 
     public function create(User $user)
     {
-        return view('event.create', compact('user'));
+        $current_date = date("Y-m-d", strtotime( "now" )) . "T" . date(("H:i"), strtotime("now + 3 hours"));
+        
+        return view('event.create', compact('user', 'current_date'));
     }
 
     public function store(Request $request)
@@ -34,9 +38,22 @@ class EventController extends Controller
         // verčių pavadinimai pareina iš create.blade formos kur yra <input name="title"... etc.
         // ofc turėtum dar tikrinti ar geri values pareina, bet kolkas tiek to
 
-        Event::create(
+        $data = $this->validateData();
+
+        $picture = $request->file('picture')->store('uploads', 'public');
+
+        $event = auth()->user()->event()->create([
+            'title' => $data['title'],
+            'place' => $data['place'],
+            'start_date' => $data['start_date'], 
+            'end_date' => $data['end_date'],
+            'description' => $data['description'],
+            'picture' => $picture,
+        ]);
+
+        /*Event::create(
             $this->validateData()
-        );
+        );*/
 
         // jeigu viskas gerai, redirektini į route kurio vardą apsirašai prie routes 'web.php' kur yra
         // Route::get('/{user}/Events', [EventController::class, 'index'])->name('Events.show');
@@ -46,17 +63,39 @@ class EventController extends Controller
 
     public function show(User $user, Event $event)
     {
-        return view('event.show', compact('event', 'user'));
+        $default_picture = "uploads/h64PpximusVddp3kUBJdtMwBLiwqu4lThXverfYe.png";
+
+        return view('event.show', compact('event', 'user', 'default_picture'));
     }
 
     public function edit(User $user, Event $event)
-    {
-        return view('event.edit', compact('event', 'user'));
+    {        
+        //dd($event->start_date);
+        //dd(date(("H:i"), strtotime( $event->start_date )));
+
+        $current_date = date("Y-m-d", strtotime( "now" )) . "T" . date(("H:i"), strtotime("now + 3 hours"));
+        $start_date = date("Y-m-d", strtotime( $event->start_date )) . "T" . date(("H:i"), strtotime( $event->start_date ));
+        $end_date = date("Y-m-d", strtotime( $event->end_date )) . "T" . date(("H:i"), strtotime( $event->end_date ));
+
+        return view('event.edit', compact('event', 'user', 'end_date', 'start_date', 'current_date'));
     }
 
-    public function update()
+    public function update(User $user, Event $event, Request $request)
     {
+        $data = $this->validateData();
 
+        $picture = $request->file('picture')->store('uploads', 'public');
+
+        $event->update([
+            'title' => $data['title'],
+            'place' => $data['place'],
+            'start_date' => $data['start_date'], 
+            'end_date' => $data['end_date'],
+            'description' => $data['description'],
+            'picture' => $picture,
+        ]);
+        
+        return redirect()->route('events.index', $user->id);
     }
 
     public function destroy(User $user, Event $event)
@@ -74,7 +113,7 @@ class EventController extends Controller
             'start_date' => ['required', 'date', 'after:now'],            
             'end_date' => ['required', 'date', 'after:start_date'],            
             'description' => ['string', 'nullable', 'max:255'],
-            'picture' => ['nullable', 'max:10240'],
+            'picture' => ['image', 'nullable', 'max:10240'],
         ]);
     }
 }

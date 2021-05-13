@@ -5,7 +5,7 @@
         <h1 class="mb-4">Create event</h1>
 
         <div>
-            <form action="/{{ $user->id }}/events" method="post">
+            <form action="/{{ $user->id }}/events" enctype="multipart/form-data" method="post">
 
                 <div class="form-group">
                     <label class="font-weight-bold" for="title">Event`s title</label>
@@ -14,20 +14,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="font-weight-bold" for="place">Event`s place</label>
-                    <input type="text" name="place" class="form-control" autocomplete="off" placeholder="Enter the event`s place" style="width: 40%;">
-                    @error('place') <div class="error"><p>{{ $message }}</p></div> @enderror
-                </div>
-
-                <div class="form-group">
                     <label class="font-weight-bold" for="start_date">Event`s start date</label>
-                    <input type="datetime-local" name="start_date" class="form-control" autocomplete="off" min="{{ strtotime("now") }}">
+                    <input type="datetime-local" name="start_date" class="form-control" autocomplete="off" min="{{ $current_date }}">
                     @error('start_date') <div class="error"><p>{{ $message }}</p></div> @enderror
                 </div>
 
                 <div class="form-group">
                     <label class="font-weight-bold" for="end_date">Event`s end date</label>
-                    <input type="datetime-local" name="end_date" class="form-control" autocomplete="off" min="{{ strtotime("now") }}">
+                    <input type="datetime-local" name="end_date" class="form-control" autocomplete="off" min="{{ $current_date }}">
                     @error('end_date') <div class="error"><p>{{ $message }}</p></div> @enderror
                 </div>
 

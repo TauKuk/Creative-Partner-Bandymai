@@ -5,7 +5,7 @@
         <h1>Edit {{ $event->title }}</h1>
 
         <div>
-            <form action="/{{ $user->id }}/events/{{ $event->id }}" method="post">
+            <form action="/{{ $user->id }}/events/{{ $event->id }}" enctype="multipart/form-data" method="post">
 
                 @method('PUT')
 
@@ -23,13 +23,13 @@
 
                 <div class="form-group">
                     <label class="font-weight-bold" for="start_date">Event`s start date</label>
-                    <input type="datetime-local" class="form-control" name="start_date" value="{{ old('end_date') ?? $event->end_date }}">
+                    <input type="datetime-local" class="form-control" name="start_date" value="{{ old('start_date') ?? $start_date }}" min="{{ $current_date }}">
                     @error('start_date') <div class="error"><p>{{ $message }}</p></div> @enderror
                 </div>
 
                 <div class="form-group">
                     <label class="font-weight-bold" for="end_date">Event`s end date</label>
-                    <input type="datetime-local" name="end_date" class="form-control" autocomplete="off" min="{{ strtotime("now") }}" value="{{ old('end_date') ?? $event->end_date }}">
+                    <input type="datetime-local" name="end_date" class="form-control" autocomplete="off" value="{{ old('end_date') ?? $end_date }}" min="{{ $current_date }}">
                     @error('end_date') <div class="error"><p>{{ $message }}</p></div> @enderror
                 </div>
 
